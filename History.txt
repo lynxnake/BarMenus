@@ -1,0 +1,470 @@
+BarMenu Components Version History:
+
+Legend; (*) notes, (-) changes to the code
+
+  -- Version 2.3.9 -- (2003-09-10)
+     * Added missing Delphi 7 package (why no one did report this earlier?:)
+     * Demo3 added: A demo showing how to have different menuitem fonts while 
+       letting BarMenus to do the default drawing.
+
+
+  -- Version 2.3.8 -- (2003-04-02)
+     * Added Delphi 7 packages (you probably could use the D6 packages just fine
+       too)
+     * No source modifications
+
+  -- Version 2.3.7 -- (2003-02-13)
+     * I'm not sure if the C++Builder packages work as they are now. Hopefully
+       I can fix those, however if you recreate the packages BarMenus should work
+       just fine. I have no way testing myself. Sorry.
+     - Updated DFS.inc for Delphi 7 compatibility. Thanks goes to
+       Magnus Flysjö for making those modifications. Use the Delphi 6 packages for 
+       now.
+     - Fixed "$ObjExportAll On" bug when using DCC32.EXE through command line.
+
+  -- Version 2.3.6 -- (2002-07-21)
+     - If MenuItem ShortCut has csWinKey = $0200 set it will be intepreted as
+       Win key. This is my own extension to the TShortCut. To add Win key to
+       ShortCut use eg. code MenuItem.ShortCut := MenuItem.ShortCut + $0200;
+       Note that this is only visual, you need to do own handling for the
+       actual key press. BcShortCutToText() is provided for proper shortcut
+       translation.
+     - Better handling with MenuFont and menuitem sizes. It's not perfect, but
+       better.
+
+  -- Version 2.3.5 -- (2002-07-09)
+     * Big thanks for Yury Zaytsev, member of Binary Insight SDT
+       (www.binary-insight.com), for testing and providing packages for C++Builder 6.
+
+  -- Version 2.3.4 -- (2001-12-19)
+     * Now you can license your copy of BarMenu Components under Corporation
+       License. Read Register.txt and CorpLicense.txt. License fee is $29.90 (USD).
+       You can still use this package under Public License even for commercial
+       applications. Corporation License is just an alternative and has terms
+       which probably make it a bit more suitable for corporations.
+     * BarMenu Components can be downloaded now from (old url is not updated anymore
+       after this release),  http://www.bluecave.net/products/barmenus/
+       
+     - Fixed MenuItem Check/RadioItem Glyph drawing if no Images assigned to the
+       menu.
+
+  -- Version 2.3.3 -- (2001-12-03)
+     - MenuStyle property. It will allow you to select msStandard, msWindowsXP
+       or msAuto. msAuto will select drawing style depending on the Windows in
+       which the application is run. msStandard is the VCL old way and msWindowsXP
+       is Windows XP way.
+     - Now calls to BeginUpdate are cumulative; for every call to BeginUpdate
+       there must be a corresponding call to EndUpdate.
+     - ssShortLines and ssNormal separators can have Fading ends.
+     - Separators.FlatLines property. Draws the separators lines as a single line.
+     - New demo application. File Explorer through menus. Read the comments in the
+       project for more information about the hacks used in the application
+       to boost dynamic menu creation to be about 300 (!) times faster (especially
+       when menu will have *many* items). If you recompile the project, be sure
+       to check that the hack class definition matches the one in the VCL 
+       Menus.pas - otherwise you'll end up with Access Violation.
+
+  -- Version 2.3.2 -- (2001-11-28)
+     * BarMenu Components Mailing list: barmenus@freelists.org. To join the list
+       go to http://www.freelists.org/list/barmenus
+
+     * This update is mainly a Windows XP compatiblity update.
+     * BiDiMode drawing does not work correctly for FarEast locale. (requires
+       more changes than I have time to do now). Not that it would work in earlier
+       versions either.. If you need this support I'll add it whenever I get
+       request about it.
+     - Small bug in TBcBarMainMenu top menu measuring if no menu Images were
+       assigned.
+     - I could have fixed the small bug (in VCL) which made the background
+       color of TMainMenu toplevel items to be drawn incorrectly but I decided
+       to copy the whole item drawing code from the VCL and make the changes
+       there. I've had this in mind earlier as this way I can change the drawing
+       more. So now the TBcMainMenu draws it's toplevel items correctly under
+       Windows XP.
+     - Item drawing under XP is done now XP way (I did use the Windows Movie Maker
+       as a guide). Especially Checked items (Item Height is defaulted always even
+       because of the checked glyph frame. This makes the items a bit larger under
+       XP).
+     - Item glyphs are now centered to the item height. This applies all platforms.
+     - Documented the BeginUpdate and EndUpdate methods. Those should be used
+       when creating menus dynamically at runtime.
+     - Demo application custom drawmodule code draws now disabled items as grayed
+       now.
+     - Demo application has RadioItems in the main menu Windows menu to demonstrate
+       the new drawing for the items.
+     - Demo application supports now Windows XP visual styles.
+     - Now RadioItems have dot as a default checked glyph instead of a check mark.
+     - Added OnMeasureMenuItem events to TBcBarMainMenu and TBcBarPopupMenu. This
+       event is global for all items in the menu and is called before requesting
+       DrawModule for measurement. So you can override the default Item Width
+       and/or Height here before those are processed further. If you change the
+       DefaultMeasure var parameter to False then DrawModule measuring is omitted.
+
+  -- Version 2.3.1 -- (2001-10-23)
+     - Fixed DrawModule updating a bit. Added RedrawMenus method for
+       TBcBarMenusDrawModule. (There is a small workaround how the updating
+       is done for mainmenu items. If someone finds the "problem" tell me)
+       This fixes also the top item measuring/drawing on custom DrawModules.
+     - Fixed demo project code for the TBcCustomDrawModule
+
+  -- Version 2.3.0 -- (2001-10-21)
+     * Hopefully the Delphi 6 and C++Builder 5 packages work because I had
+       to manually edit the package sources (I don't have Delphi 6 or CB5
+       installed)
+     - Implemented DrawModule concept. DrawModule centralizes drawing of
+       all menuitems within the menu. If there is no DrawModule assigned then
+       the default drawing implemented in BarMenus is used.
+       You can create own DrawModules by inheriting from TBcBarMenuDrawModule
+       class and implementing the two abstract methods. Look BcDrawModule for
+       more info. There is a example (TBcCustomDrawModule) DrawModule in the
+       package which allows the drawing through events OnDrawMenuItem and
+       OnMeasureMenuItem events. Example usage in the demo project.
+     - Fixed bug with AdvancedBeforeDrawBar event calling (thanks for the
+       guy who pointed it out; cannot check his name now :( )
+     - Changed menuitem event loading for BcBarPopupMenu to use Loaded
+       method as well. Should make the popup faster if there are large
+       number of menuitems..  I have not tested how the menus handle
+       menuitems added on runtime but it should reset the events on Rebuild
+       (though not very optimal solution).
+     - Updated Readme.txt and FAQ.txt (forgot to do this in the 2.2.0 :/ ).
+       Install/Uninstall instructions more complete
+     - Gradient drawing is now done using 32-bit DIB. Faster and should
+       save some resources. There is a function DrawGradient() which you can
+       use to draw gradients to your own TBitmaps or TCanvas'. Preferred to
+       use TBitmap as with TCanvas it uses a bit more resources. See demo
+       project for example usage. As a small note that the new code in the
+       BarMenus.DrawGradient() is A LOT faster than the old code used in the
+       Demo project.
+     - Gradient has GradientStyle property (gsVertical, gsHorizontal,
+       gsDiagonalLeftRight, gsDiagonalRightLeft). Note that gsDiagonalRightLeft and
+       gsDiagonalLeftRight uses Pixels[] if not using the TBitmap. This is not
+       good if accessing directly to screen visible canvas. So using TBitmap
+       buffer is recommended (atleast my ATI Radeon VE had side effect of
+       hardly noticable trembling, but annoying, in the whole screen if not using
+       buffer).
+     - Fixed couple of Range Checking Errors and now the clBtnFace (plus others)
+       work as Caption highlight/shadow colors.
+     - Added Visible properties to BarPicture, BarBackPicture and BarCaption.
+       You can use OnAdvancedBeforeDrawBar to override the drawing set.
+     - Added gradient support Separators ssCaption (for upgraders as a note that
+       CaptionColor property was removed).
+     - Now Separators.Alignment works with SeparatorStyle ssShortLine too.
+
+  -- Version 2.2.0 -- (2001-10-16)
+     * Changed the minor version number because of the "parameter incorrect"
+       bug fix.
+     - Caption Highlight and Shadow colors. Set to clNone to disable.
+       Use Depth property to control highlight and shadow distance
+       (you can probably use negative values too).
+     - Added overloaded procedure Popup(P: TPoint) method for
+       TBcCustomBarPopupMenu. Added PopupAtCursor which will popup the
+       popupmenu at mouse cursor position.
+     - Fixed some Assign methods.
+     - FINALLY FOUND the "parameter incorrect" bug. It did not occur
+       of menu animations were disabled.. and I don't use those myself :)
+       The Windows apparantly creates different DC handle for the
+       menu animation and it made the WindowFromDC -> GetClientRect
+       return something very incorrect. If the animation is disable,
+       then it returns right values. Now it checks if the GetClientRect
+       returns valid value. If it is not valid then it uses the
+       height calculated in the measure event.
+       If the "parameter incorrect" still exists, please tell me ..
+       Because of this window handle problem I removed the Opacity and
+       Flat properties (well, moved to protected).
+
+  -- Version 2.1.0 -- (2001-10-11)
+     - Separated the Designtime registering to own designtime package.
+     - MenuFont property. Note, Menu items aren't sized correctly. Either
+       use font which is small enough or use OnMeasureMenuItem to do own
+       measuring.
+     - Fixed the MenuChanged a bit. Now it should redraw the menu bar
+       only if really needed. Makes especially the TBcMainMenu faster.
+       Also other optimization done.
+     - Changed the Picture properties to TBcPicture which is just a map
+       to TBitmap or TPicture depending on the PICTUREASTBITMAP define.
+       By default it is set, so Pictures are TBitmaps. I hope this fixes
+       the "Parameter incorrect" errors. If you got the error earlier,
+       please try both ways to compile the package and let me know the
+       results. Note that the demo project works when PICTUREASTBITMAP is
+       defined.
+     - TBitmap Transparency problem should have been fixed. It was
+       strange bug in the code which did not appear under NT. I've tested
+       the code under Windows 2000 Professional and Windows 98.
+       Also used MemProof to check any resource leaks or peaks and
+       found nothing.
+     - Added FlushDoubleBuffer methods for the TBcBarPopupMenu and
+       TBcMainMenu. It will free the internal DoubleBuffer and force
+       it to be redrawn when it's needed next time. Normally the bar
+       is stored there for fast access.
+     - Updated Demo project.
+     - Delphi 6 and C++Builder 5 compatibility with own packages.
+       Couldn't test C++Builder 5 packages, so if they work let me know.
+
+  -- Version 2.0.3 -- (2001-10-07)
+     * Skipped version 2.0.2.
+     * Long time since last release. I've been using my working version,
+       so kind of forgot to release this fixed version :) 
+
+     - Many thanks to Magnus Flysjö (magnus.flysjo@visuellkommunikation.com)
+       for providing new (alternative) separator line drawing code.
+
+     - Design time preview for TBcBarMainMenu. The changes can be seen
+       in the form mainmenu. Naturally doesn't preview custom events.
+
+     - Added OnAdvancedDrawBar event. It get the all possible barparts as
+       parameter. You can select which the internal drawing will draw.
+       Note: If you disable gradient and backbitmap, or grandient and backbitmap
+       is transparent, you should draw somekind of background to the canvas
+       in this event.
+
+     - Opacity property. This is just an experiment. Don't take
+       it seriously. If you find it useful, that's great.. :) Note: Works
+       only in Windows 2000 and above.
+
+     - Flat property.
+       * There are some constants in the code near DrawMenuWindowBorder(),
+         which allows you to try obilique angled corners. It
+         doesn't work as expected, and couldn't find solution to
+         fix it. So, no properties about it ..
+
+     - Improved menu bar height calculation. It is not calculated
+       in MeasureItem anymore.
+
+     - Fixes with changing property values at runtime and changes not
+       showing within the menu bar. Not complete.
+
+     - Fixed a bug of losing custom OnDraw events when recompiling the
+       package while having the form open.
+
+     - Compatibility layer fixed so that it should not require any
+       additional maintanance anymore (easier for me..). That fixes
+       the missing events too.
+
+     - BarBitmap and BarBackBitmap changed to BarPicture and BarBackPicture.
+       Those have new property Picture instead of Bitmap. It accepts various
+       graphic formats not just TBitmap. The old Bitmap property is is
+       depricated. Sorry for this, but it is better this way.
+
+     - Fixed drawing with menus with bar and menu breaks. No more empty
+       space.
+
+     - Fixed the Demo project.
+
+  -- Version 2.0.1 -- (2001-07-20)
+     - Fixed a bug with TBcMainMenu and PopupHeight growing all the time..
+
+     - Fixed a bug with changing menuitems' Visible in runtime. Doublebuffer
+       was not updated.
+
+  -- Version 2.0.0 -- (2001-07-18)
+     * Package now without debug information and compatibilty layer.
+       Now it is time to post this to several component sites and
+       wait for Your email :-)
+
+     * Added simple FAQ.txt.
+
+     - Updated screenshot images. 
+
+  -- Version 2.0.0 beta3 -- (2001-07-18)
+     * The code is starting to look massive enough.. ;)
+
+     * Eh, Forgot the License.txt from beta2.. =) Please read it before
+       using this software.
+
+     * I think that this is starting to really look like version 2.0.0.
+       So, I think I'll just release this as final.
+
+     - Added OnBeforeDrawBar and OnAfterDrawBar events which allows you to
+       do your own custom bar in no time! See Readme.txt for usage.
+
+     - Fixed the doublebuffer refreshing happening even if it was not
+       needed. 
+
+     - Added bar back bitmap. Now you can have bitmap instead of gradent
+       bar. See Readme.txt for details.
+
+     - Added bar border. You can select any color as border, if the color
+       is clNone (Default), then the border is not drawn.
+
+     - Add bar Side property. You can choose which side of the menu the
+       bar is drawn. If you have submenus, then the submenu arrow is drawn
+       over the bar. I think that the system draws the arrow, so I think
+       there is very little I can do about it. So, do not use submenus
+       or make the bar that way it looks good even if the arrow is at
+       "wrong" place. Solutions to this problem are welcome..
+
+     - Added Bar caption text direction. You can selection which direction
+       the text is drawn. Defaults to dDownToUp.
+
+     - Finally. Support for own OnAdvancedDrawItem and OnMeasureItem in
+       the items. Note: If you do custom drawing at the menu which has the
+       bar, the gradient bar isn't drawn. I try to do some workaround.
+
+     - Bar.Width property tells now the real size of the graphical part
+       of the bar. The space is not included anymore. Space is now a property
+       which defaults to 1. This makes easier to fit bar background bitmaps.
+
+     - Added Bar caption Alignment property. Note: OffsetY is now calculated
+       from the alignment direction. Naturally with vaMiddle Alignment
+       the OffsetY has no effect. In your old apps, this means that the
+       old default OffsetY -6 needs to be changed manually to the new
+       default value 6. Because of this, I changed the Alignment type names
+       not to have the "Bitmap".
+
+     - Drawing code made more procedural. In the process the bar
+       doublebuffer is drawn now in a one phase. It makes the thing
+       faster and the small delay of bar appearing to the screen is gone.
+
+  -- Version 2.0.0 beta2 -- (2001-07-16)
+     * Thanks to Magnus Flysjö (magnus.flysjo@visuellkommunikation.com)
+       for solution to fix the TFont.Handle resource leak.
+
+     * Note: You cannot use OnMeasureItem or OnAdvancedDrawItem events
+       in the menuitems.
+
+     * Readme.txt and License.txt. Finally.
+
+     * Somebody might ask why I'm not creating custom drawn TForms to mimic
+       the behaviour of menus (like the AnimatedMenus.com and ToolBar97/2000
+       do). Well, answer are the resources. By using the "real" menus the
+       resource usage isn't that big. I know I'm not able to add that much
+       functionality as the alternative menu components have, but if you
+       really need those features, use the alternative :)
+
+     - Changed the lineitem caption behavious. Now the lineitems are
+       done like normal lineitems. The Hint of the item is used as caption.
+       I think it's this way a bit more convient. To prevent the line caption
+       drawing even if there is Hint set, use the menuitem Enabled property.
+
+     - Double buffer is created now on-demand. Means, if you have menu without
+       the gradient bar the menu uses one TBitmap less. If you set the BarVisible
+       True in runtime the double buffer is created when the menu is drawn first time.
+       If you set the BarVisible to False, then the double buffer TBitmap is destroyed.
+       This behaviour is done through the BarDoubleBuffer protected property.
+
+     - Lineitem captions drawn better now. Different system menu font might
+       cause problems. e.g. doesn't fit as the itemheight is fixed currently.
+
+     - Fixed the ShortLines selection drawing
+
+     - Some modifications which will make background image easier to
+       implement.
+
+     - Submenus are automatically set for correct Measure and Draw events.
+
+     - Added TBcBarMainMenu !! The first visible menu in the mainmenu has the
+       gradient bar. Comments are welcome. Note: This version DOES NOT WORK
+       Borland TMenuBar component (downloadable from Borland website. With
+       TMenuBar you can create menubar like in Delphi IDE). I will see what
+       I can do.
+
+     - There is now experimental Interface layer to patch the common anchestor
+       problem with TbcBarPopupMenu and TBcBarMainMenu. Please tell me, if there
+       are any problems. I have not seen this kind of solution anywhere else,
+       so I don't know if there are any problems implementing interfaces within
+       TComponent.
+
+     - New version of DFS.inc (though, it doesn't support Kylix).  
+
+  -- Version 2.0.0 beta -- (2001-07-10)
+     * Treat this version as "beta", as it might contain major bugs.
+       I'll try to fix those (if any) when pointed out. There might be
+       a memory leak on the TFont.Handle handling. Somebody wrote about
+       it for me, but I'm not that sure about the solution.
+     * This beta doesn't have new readme.txt (version 1 readme only),
+       Some bugs that I know:
+         * if used ShortLines the item image background is drawn with
+           selected color too.
+
+     * Never released the 1.2.0 as I knew that I would be doing some
+       major changes.
+     * Readme.txt for install/usage instructions (minimal) and
+       History.txt (this file) for history.
+     * If I have extra time, I'll look into possibility of Kylix version.
+       I have only one computer and I'm too lazy to reboot to Linux...
+       There is some preliminary Kylix support, which has not been tested
+       under Kylix.
+     * Also C++Builder version is in the ToDo-list. If somebody has this
+       working in C++Builder, *please* let me know what changes it needs.
+     * IDE integrated Help file is in the ToDo-list. If somebody knows
+       good, easy to use and working *free* application to make Help
+       files, let me know. I'm not refering now to the Microsoft's Help
+       Workshop.
+     * If you want to have some cool colors (e.g. dynamically same colors
+       as the gradient caption in Windows 98/Windows 2000) check my
+       TColor propertyeditor.
+       http://mintus.codefield.com/download/BC_XPColorPropertyEditor.zip
+
+     - Component features now with a own package. This because I separated
+       some of the code to units. Also, the directory structure has
+       now Packages, Source and Demo directories.
+
+     - Gradient drawing optimized a bit. I don't know how much faster
+       it is, but it is faster now.
+
+     - Fixed random Range Checking error with TFont.Handle, if compiled
+       Range Checking set off.
+
+     - I think there was a memory leak with the double buffer. Now it
+       has been fixed. Also to prevent some Assigned() parts to fail all
+       Free-operations are done through FreeAndNil().
+      
+     - ShortLines property allows you to make the separator lines shorter
+       like in Microsoft Office 2000.
+
+     - Separator lines can have text in it. Just put the text after the
+       "-" char like "-My Cool Separator". They don't draw correctly in
+       design-time.
+
+     - Overlapping menuitem text and shortcut text bug with menuitems 
+       without itemimages should have been fixed now.
+
+     - Most the of the properties are now grouped in the Object
+       Inspector. Makes things a bit more easier to use. Sorry for this,
+       as it makes this version not to be compatible with older versions.
+       However, there is compatibility mode, but you need to enable
+       it manually by editing file BarMenus.inc.
+
+     - Class name is now TBcBarPopupMenu. This allows the old
+       TBarPopupMenu and the new to co-exists.
+       Bc is prefix from Bluecave. Bluecave Software is my software
+       company; for more information go to http://www.bluecave.net/.
+       The pages should be ready soon. (Notes: 2001-10-11, still not ready :)
+
+     - More comments were added to the code. If you feel that some part
+       isn't commented well enough, I'll use "documentation on demand"
+       principle.
+
+  -- Version 1.2.0 -- (2001-06-17)
+     * Thank you for all of you who use my components. I appreciate
+       it and all the e-mails I've received.
+     * Component is released now under Bluecave Public License V 1.0.
+       You may use this component same way as before, only the terms
+       are explained a bit better.
+
+     - Component uses now Delphi Free Stuff "DFS.inc" include and my
+       "BcDirectives10.inc" include.
+
+  -- Version 1.1.0 -- (2000-06-28)
+     - Made the drawing to use double buffer. Now it can refresh the bar
+       part when needed and doesn't give flicker. This modification also
+       allows to e.g. animate the bar easily ... when I have the time to
+       add animation stuff..
+
+     - Bug: If you don't have menu glyphs assigned to any item, drawing
+       of items bugs. This happens with normal TPopupMenu as well. Probably
+       some VCL 'bug'. I have fix to this, but need to test it first.
+       (note, this bug has been in all earlier versions too)
+
+  -- Version 1.0.3 -- (2000-06-24)
+     - Support for my Expanding menu component system ( ignores items with
+       caption as '#' )
+
+  -- Version 1.0.2 -- (2000-06-24)
+     - property BarVisible: Boolean
+
+  -- Version 1.0.1 -- (2000-06-23)
+     - Fixed font assignment AV using elipses (...) button
+
+  -- Version 1.0.0 -- (2000-06-22)
+     - First release

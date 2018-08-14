@@ -1,0 +1,52 @@
+  ============================================================================
+                      Bluecave Software Products (2003-02-13)
+        Copyright (C) 2000-2003 Bluecave Software. All Rights Reserved.
+  ============================================================================
+
+
+  Other Bluecave Software Products:  
+  =================================
+
+    Delphi/C++Builder/Kylix:
+
+    * BarMenu Components =====================
+      
+      A package to create menus and popupmenus with a gradient bar - like the 
+      classic start-menu. BarMenu Components are compatible with Windows XP with 
+      it's own look. For more flexibility there is a DrawModule concept. DrawModule 
+      is separate module which handles the drawing for the whole menu.
+      It is easy to convert existing menus in you applications. BarMenus are 
+      resource friendly, no Form based solutions. Package contains two demo 
+      applications.
+
+       * Freeware and Shareware, see more information from the License
+       * Delphi 5 and above, C++Builder 5 and above
+       * Grab from:  http://www.bluecave.net/products/barmenus/
+
+
+    * Bluecave Components ====================
+      
+      Set of different kind of components, eg. TBcWebLabel, TBcStringsContainer,
+      TBcThreadTimer, TBcAPITimer (no more window messages for timers), 
+      TBcOpenDialog and TBcSaveDialog (allows to put custom components in them), 
+      TBcAction, TBcExpressionCompiler, TBcNTSecurityPrivileges (*very* easy way 
+      to access NT privileges and compatible with Windows 9x/Me). 
+
+       * Freeware for Freeware use, Shareware for Commercial use
+       * Delphi 5 and above
+       * Grab from:  http://www.bluecave.net/products/bccomps/
+
+
+    Software:
+
+    * Bluecave Winamp Slider! ================
+      
+      Basically the best Winamp autohide plug-in available and more! Was selected
+      as one of the featured plug-ins at Winamp.com at the end of year 2001.
+      (This product was the kick start for the BarMenu Components!)
+
+       * Grab from:  http://www.bluecave.net/products/slider/
+
+
+  ============================================================================
+                                               Copyright (C) Bluecave Software

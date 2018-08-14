@@ -1,0 +1,1 @@
+A demo showing how to have different menuitem fonts while letting BarMenus to do the default drawing.

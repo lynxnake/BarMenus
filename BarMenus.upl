@@ -1,0 +1,96 @@
+[DSP upload]
+File Name=BarMenus.zip
+Replace File=
+File Status=Freeware
+Full Source Included=Y
+Delphi 1.0x=N
+Delphi 2.0x=N
+Delphi 3.0x=N
+Delphi 4.0x=N
+Delphi 5.0x=Y
+Delphi 6.0x=Y
+Delphi 7.0x=Y
+C++ Builder 1.0x=N
+C++ Builder 3.0x=N
+C++ Builder 4.0x=N
+C++ Builder 5.0x=Y
+C++ Builder 6.0x=Y
+Kylix=N
+Version=2.3.7
+count=43
+1=<p><b>BarMenu Components</b> is a package to create menus and popupmenus with a
+2=gradient bar - like the classic start-menu. Gradient bar is drawn dynamically so
+3=you get very smooth bar with customizable colors. Alternatively you can
+4=have bitmap as a bar or even both; bitmap <b>and</b> gradient bar. Gradient
+5=bar can have dynamically created vertical caption with highlight and shadow
+6=colors. Also you can have additional bitmap (e.g. logo) on the bar.
+7=If you want you can also draw the menu bar manually through events.
+8=</p><p>BarMenu Components are compatible with Windows XP. Windows version is
+9=autodetected and your menus have automatically XP look under Windows XP
+10=and the standard look under older versions of Windows'. It is also possible
+11=to force the MenuStyle.</p>
+12=<p>Menu separator lines in BarMenus can be drawn in a short way - like in
+13=<i>Office 2000</i>. Also it is possible to have text in the separator line -
+14=like in <i>ICQ</i>. Separator line ends can be faded like in Windows XP.
+15= and/or lines can be flat (single line, color can be selected).</p>
+16=<p>Making some special application and need custom menu font?
+17=These components have MenuFont property to change the font other
+18=than the system default just for the menus in your application.</p>
+19=<p>For more flexibility there is a DrawModule concept. DrawModule is separate
+20=module which handles the MenuItem drawing for the whole menu. You can switch
+21=between different DrawModules in designtime and runtime. Let the user
+22=choose the menu look in your application - implement with just one line of
+23=code!</p>
+24=<p>These components are compatible with XP and you can set XP look.</p>
+25=<p>Components are compatible with <i>VCL</i>, so it is easy to convert existing
+26=menus. In addition BarMenus are resource friendly. Package contains two</p>
+27=demo applications.</p><p><b>BarMenu Components</b> package contains
+28=following components:
+29=<li><b>TBcBarMainMenu</b></li>
+30=<li><b>TBcBarPopupMenu</b></li>
+31=<li><b>TBcCustomDrawModule</b></li></p>
+32=<p>Screenshots:
+33=<li>Link: <a
+34=href="http://www.bluecave.net/products/barmenus/screenshots/BarMenus1.gif">
+35=Screenshot 1</a><li>Link: <a
+36=href="http://www.bluecave.net/products/barmenus/screenshots/BarMenus2.gif">
+37=Screenshot 2</a><li>Link: <a
+38=href="http://www.bluecave.net/products/barmenus/screenshots/BarMenus3.gif">
+39=Screenshot 3</a><li>Link: <a
+40=href="http://www.bluecave.net/products/barmenus/screenshots/BarMenus4.gif">
+41=Screenshot 4</a><li>Link: <a
+42=href="http://www.bluecave.net/products/barmenus/screenshots/BarMenus5.gif">
+43=Screenshot (under Windows XP) 5</a></p>
+
+Note=
+Additional info=Text file ( extension txt )
+Category=Menus
+Platform=
+Group=Component/Code
+
+[Versions available]
+Delphi 1.0x=
+Delphi 2.0x=
+Delphi 3.0x=
+Delphi 4.0x=
+Delphi 5.0x=
+Delphi 6.0x=
+Delphi 7.0x=
+C++ Builder 1.0x=
+C++ Builder 3.0x=
+C++ Builder 4.0x=
+C++ Builder 5.0x=
+C++ Builder 6.0x=
+Kylix=
+
+[DSP Support]
+DSP Support=Y
+
+[Uploader_1]
+Author name=Bluecave Software
+Contact=Jouni Airaksinen
+Author E-mail=Mintus@Codefield.com
+Author URL=http://www.bluecave.net/
+count=0
+Author Section=_Do Not Create Author Page!
+UpdateDSP=N
