@@ -206,6 +206,19 @@
   {$DEFINE DFS_COMPILER_6_UP}
 {$ENDIF}
 
+{$IFDEF ConditionalExpressions}
+{this should work for all Delphi versions after Delphi 6 without any modifications }
+  {$IF CompilerVersion >= 14.0}
+    {$DEFINE DFS_COMPILER_1_UP}
+    {$DEFINE DFS_COMPILER_2_UP}
+    {$DEFINE DFS_COMPILER_3_UP}
+    {$DEFINE DFS_COMPILER_4_UP}
+    {$DEFINE DFS_COMPILER_5_UP}
+    {$DEFINE DFS_COMPILER_6_UP}
+    {$DEFINE DFS_COMPILER_7_UP}
+  {$IFEND}
+{$ENDIF ConditionalExpressions}
+
 {$IFDEF DFS_COMPILER_7}
   {$DEFINE DFS_COMPILER_1_UP}
   {$DEFINE DFS_COMPILER_2_UP}
@@ -286,5 +299,4 @@
   {$DEFINE DFS_DESIGNERSELECTIONS}
   {$DEFINE DFS_IPROPERTY}
 {$ENDIF}
-
 

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4B1C3B36-1C1E-4F7E-B1B2-DC4C0A5A2CF3}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BcBarMenus250.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="BcBarMenusD250.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BcBarMenus250">
+        <MSBuild Projects="BcBarMenus250.dproj"/>
+    </Target>
+    <Target Name="BcBarMenus250:Clean">
+        <MSBuild Projects="BcBarMenus250.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BcBarMenus250:Make">
+        <MSBuild Projects="BcBarMenus250.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BcBarMenusD250">
+        <MSBuild Projects="BcBarMenusD250.dproj"/>
+    </Target>
+    <Target Name="BcBarMenusD250:Clean">
+        <MSBuild Projects="BcBarMenusD250.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BcBarMenusD250:Make">
+        <MSBuild Projects="BcBarMenusD250.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BcBarMenus250;BcBarMenusD250"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BcBarMenus250:Clean;BcBarMenusD250:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BcBarMenus250:Make;BcBarMenusD250:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
