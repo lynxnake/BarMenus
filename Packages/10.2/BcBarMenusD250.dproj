@@ -59,7 +59,7 @@
         <VerInfo_MinorVer>3</VerInfo_MinorVer>
         <VerInfo_Release>6</VerInfo_Release>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_DcuOutput>..\..\..\..\_DCU\$(Platform)\$(Config)</DCC_DcuOutput>
+        <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <VerInfo_Keys>CompanyName=Bluecave Software;FileDescription=BarMenus Component package;FileVersion=2.3.6.0;InternalName=;LegalCopyright=Copyright © 2000-2002 Bluecave Software.;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=2.3.6.0;Comments=D7 package made by Magnus Flysjц</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
@@ -114,9 +114,6 @@
                 <Source>
                     <Source Name="MainSource">BcBarMenusD250.dpk</Source>
                 </Source>
-                <Language>
-                    <Language Name="RootDir">C:\tSMi\tSMi\Components\_submodules\BarMenus\Packages\10.2\</Language>
-                </Language>
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k250.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp250.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
