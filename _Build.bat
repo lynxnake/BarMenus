@@ -24,4 +24,12 @@ for %%i in (Debug Release) do (
 	)
 )
 
+call :install BcBarMenusD250.bpl "Bluecave: BarMenus Components (Designtime)"
+
+goto:eof
+
+:Install
+echo on
+rem Install package to Delphi "subroutine"
+reg add "HKCU\Software\Embarcadero\BDS\19.0\Known Packages" /v "C:\Users\Public\Documents\Embarcadero\Studio\19.0\Bpl\%1" /t REG_SZ /f /d %2
 goto:eof
